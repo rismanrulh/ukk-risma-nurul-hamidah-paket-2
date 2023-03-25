@@ -23,14 +23,14 @@ Route::get('/', function () {
     return view('welcome')->name('welcome');
 });
 
-Route::get('/register', [RegisterController::class, 'showRegisterMasyarakat'])->name('register');
-Route::post('/register', [RegisterController::class, 'registerMasyarakat']);
+Route::get('/register', [LoginController::class, 'showRegisterMasyarakat'])->name('register');
+Route::post('/register', [LoginController::class, 'registerMasyarakat']);
 
 Route::get('/login', [LoginController::class, 'showLoginMasyarakat'])->name('login');
 Route::post('/login', [LoginController::class, 'loginMasyarakat']);
 
 Route::get('/petugas/login', [LoginController::class, 'showLoginPetugas'])->name('petugas.login');
-Route::post('/petugas/login', [LoginController::class, 'loginPetugas']);
+Route::post('/petugas/login', [LoginController::class, 'loginPetugas'])->name('auth.petugas ');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -39,4 +39,4 @@ Route::get('/masyarakat/dashboard', [MasyarakatController::class, 'dashboard'])-
 Route::get('/masyarakat/complain', [PengaduanController::class, 'index'])->name('pengaduan.index');
 Route::get('/masyarakat/create', [PengaduanController::class, 'create']);
 Route::post('/masyarakat', [PengaduanController::class, 'store']);
-Route::delete('/masyarakat/pengaduan/{$id}', [PengaduanController::class, 'delete']);
+Route::get('/masyarakat/pengaduan/{id}', [PengaduanController::class, 'delete']);

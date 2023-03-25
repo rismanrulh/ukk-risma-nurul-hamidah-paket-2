@@ -3,7 +3,7 @@
     <div class="mt-2">
         <div class="d-flex">
             <h4>Daftar Pengaduan</h4>
-            <a href="/masyarakat/create" class="btn btn-success ms-auto">
+            <a href="/masyarakat/create" class="btn btn-light ms-auto">
                 <img src="{{ asset('assets/icons/plus-lg.svg') }}" width="20px" alt="">
                 Tambah Aduan
             </a>
@@ -46,14 +46,14 @@
                         </td>
                         <td>
                             {!! $complain->status == '0'
-                                ? '<span class="badge text-bg-secondary">Pending</span>'
+                                ? '<span class="badge text-bg-dark">Pending</span>'
                                 : ($complain->status == 'Proses'
                                     ? '<span class="badge text-bg-warning">Proses</span>'
                                     : '<span class="badge text-bg-success">Selesai</span>') !!}
                         </td>
                         <td>
                             <a class="text-decoration-none" href="/pengaduan/edit/{{ $complain->id }}">
-                                <button type="button" class="btn btn-warning btn-sm">
+                                <button type="button" class="btn btn-light btn-sm">
                                     <img src="{{ asset('assets/icons/pencil-square.svg') }}" width="20px" alt="">
                                 </button>
                             </a>

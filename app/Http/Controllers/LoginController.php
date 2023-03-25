@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\masyarakat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,7 +44,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->route('petugas.landing');
         }
-        return back()->with('error', 'Username atau Password salah.');
+        return back()->with('error', 'Username atau Password tidak sesuai.');
     }
 
     public function logout()
@@ -52,5 +53,26 @@ class LoginController extends Controller
         Auth::guard('petugas')->logout();
 
         return redirect()->intended('login')->with('success', 'Logout berhasil.');
+    }
+
+    public function showRegisterMasyarakat()
+    {
+        return view('auth.register');
+    }
+
+    public function registerMasyarakat(Request $request)
+    {
+        $validateData = $request->validate([
+            'nik' => 'required',
+            'nama' => 'required',
+            'username' => 'required',
+            'password' => 'required',
+            'telp' => 'required',
+        ]);
+        $validateData['password'] = bcrypt($request->password);
+
+        masyarakat::create($validateData);
+
+        return redirect()->route('login')->with('success', 'Registrasi berhasil.');
     }
 }

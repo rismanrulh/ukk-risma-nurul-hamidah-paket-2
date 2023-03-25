@@ -21,7 +21,14 @@ class PetugasSeeder extends Seeder
                 'username' => 'risma04',
                 'password' => bcrypt('risma'),
                 'telp' => '08558531201',
-                'level' => 'admin',
+                'level' => 'Admin',
+            ],
+            [
+                'nama' => 'Siti Sahla Fauzia Ardiani',
+                'username' => 'sahla',
+                'password' => bcrypt('sahla'),
+                'telp' => '08558531202',
+                'level' => 'Petugas',
             ],
         ];
         petugas::insert($data);
