@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\petugas;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -12,8 +13,17 @@ class PetugasSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run():void
     {
-        //
+        $data = [
+            [
+                'nama' => 'Risma Nurul Hamidah',
+                'username' => 'risma04',
+                'password' => bcrypt('risma'),
+                'telp' => '08558531201',
+                'level' => 'admin',
+            ],
+        ];
+        petugas::insert($data);
     }
 }

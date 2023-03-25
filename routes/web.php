@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengaduanController;
+use App\Models\masyarakat;
 use Illuminate\Foundation\Auth\User;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -18,11 +20,8 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', function () {
-    return view('pengaduan.index');
+    return view('welcome')->name('welcome');
 });
-
-// Route::get('/login', [LoginController::class, 'index'])->name('login');
-// Route::post('/login', [LoginController::class, 'auth'])->name('auth');
 
 Route::get('/register', [RegisterController::class, 'showRegisterMasyarakat'])->name('register');
 Route::post('/register', [RegisterController::class, 'registerMasyarakat']);
@@ -34,3 +33,10 @@ Route::get('/petugas/login', [LoginController::class, 'showLoginPetugas'])->name
 Route::post('/petugas/login', [LoginController::class, 'loginPetugas']);
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+//masyarakat
+Route::get('/masyarakat/dashboard', [MasyarakatController::class, 'dashboard'])->name('masyarakat.dashboard');
+Route::get('/masyarakat/complain', [PengaduanController::class, 'index'])->name('pengaduan.index');
+Route::get('/masyarakat/create', [PengaduanController::class, 'create']);
+Route::post('/masyarakat', [PengaduanController::class, 'store']);
+Route::delete('/masyarakat/pengaduan/{$id}', [PengaduanController::class, 'delete']);

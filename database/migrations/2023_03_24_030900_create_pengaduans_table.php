@@ -15,10 +15,11 @@ return new class extends Migration
     {
         Schema::create('pengaduans', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_pengaduan');
-            $table->date('tgl_tanggapan');
-            $table->text('tanggapan');
-            $table->integer('id_petugas');
+            $table->date('tgl_pengaduan');
+            $table->char('nik');
+            $table->text('isi_laporan');
+            $table->string('foto');
+            $table->enum('status', ['0', 'proses', 'selesai']);
             $table->timestamps();
         });
     }

@@ -13,15 +13,22 @@ class MasyarakatSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run():void
     {
         $data = [
             [
                 'nik' => '3201252007070003',
                 'nama' => 'Masyarakat1',
-                'username' => 'masya2',
+                'username' => 'masya1',
                 'password' => bcrypt('masya'),
                 'telp' => '082156798547',
+            ],
+            [
+                'nik' => '3201252007070005',
+                'nama' => 'Masyarakat2',
+                'username' => 'masya2',
+                'password' => bcrypt('masya'),
+                'telp' => '082156798547 ',
             ],
         ];
         masyarakat::insert($data);

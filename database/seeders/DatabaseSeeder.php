@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            MasyarakatSeeder::class
+            MasyarakatSeeder::class,
+            PetugasSeeder::class,
+            PengaduanSeeder::class,
         ]);
     }
 }

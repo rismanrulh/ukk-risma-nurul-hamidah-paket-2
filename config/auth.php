@@ -72,12 +72,12 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-        'masyarakat' => [
-            'driver' =>'session',
+        'masyarakats' => [
+            'driver' =>'eloquent',
             'model' => App\Models\masyarakat::class,
         ],
-        'petugas' => [
-            'driver' =>'session',
+        'petugass' => [
+            'driver' =>'eloquent',
             'model' => App\Models\masyarakat::class,
         ],
 

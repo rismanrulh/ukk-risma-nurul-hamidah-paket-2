@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\masyarakat;
+use App\Models\pengaduan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MasyarakatController extends Controller
 {
@@ -12,9 +14,15 @@ class MasyarakatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function dashboard()
+    {
+        $complains = pengaduan::where('nik', Auth::guard('masyarakat')->user()->nik)->count();
+        return view('masyarakat.dashboard', compact('complains'));
+    }
+
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,7 +32,7 @@ class MasyarakatController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

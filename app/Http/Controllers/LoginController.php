@@ -22,7 +22,7 @@ class LoginController extends Controller
 
         if (Auth::guard('masyarakat')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             $request->session()->regenerate();
-            return redirect()->route('masyarakat.landing');
+            return redirect()->route('masyarakat.dashboard');
         }
         return back()->with('error', 'Username atau Password salah.');
     }
@@ -39,7 +39,6 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-
         if (Auth::guard('petugas')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             $request->session()->regenerate();
             return redirect()->route('petugas.landing');
@@ -52,6 +51,6 @@ class LoginController extends Controller
         Auth::guard('masyarakat')->logout();
         Auth::guard('petugas')->logout();
 
-        return redirect()->route('index')->with('success', 'Logout berhasil.');
+        return redirect()->intended('login')->with('success', 'Logout berhasil.');
     }
 }

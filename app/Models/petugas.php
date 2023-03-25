@@ -10,7 +10,7 @@ class petugas extends Model
     use HasFactory;
 
     protected $guard = 'petugas';
-    protected $fillable = ['tgl_pengaduan', 'tgl_selesai', 'nik', 'isi_laporan', 'foto', 'status'];
+    protected $fillable = ['nama', 'username', 'password', 'telp', 'level'];
 
     public function getDataMasyarakat()
     {
