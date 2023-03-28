@@ -37,7 +37,7 @@
                                 <td>
                                     <p class="m-0">Pengaduan : {{ $pengaduan->tgl_pengaduan }}</p>
                                     <p class="m-0">Proses : {{ $pengaduan->getDataTanggapan != null ? $pengaduan->getDataTanggapan->tgl_tanggapan : '-' }}</p>
-                                    <p class="m-0">Selesai : {{ $pengaduan->status == 'Selesai' ? $pengaduan->tgl_selesai : '-' }}</p>
+                                    <p class="m-0">Selesai : {{ $pengaduan->status == 'selesai' ? $pengaduan->tgl_selesai : '-' }}</p>
                                 </td>
                                 <td>{{ $pengaduan->getDataMasyarakat->nama }}</td>
                                 <td>{{ $pengaduan->isi_laporan }}</td>
@@ -51,7 +51,7 @@
                                 <td>
                                     {!! 
                                         $pengaduan->status == "0" ? '<span class="badge text-bg-secondary">Pending</span>' :
-                                        ($pengaduan->status == "Proses" ? '<span class="badge text-bg-warning">Proses</span>' : '<span class="badge text-bg-success">Selesai</span>')
+                                        ($pengaduan->status == "proses" ? '<span class="badge text-bg-warning">Proses</span>' : '<span class="badge text-bg-success">Selesai</span>')
                                     !!}
                                 </td>
                                 <td>
@@ -60,7 +60,7 @@
                                             <img src="{{ asset('assets/icons/pencil-square.svg') }}" width="20px" alt="">
                                         </button>
                                     </a>
-                                    <a class="text-decoration-none" href="/petugas/pengaduan/delete/{{ $pengaduan->id }}" onclick="return confirm('Are you sure to delete?')">
+                                    <a class="text-decoration-none" href="/petugas/tanggapan/delete/{{ $pengaduan->id }}" onclick="return confirm('Are you sure to delete?')">
                                         <button type="button" class="btn btn-danger btn-sm">
                                             <img src="{{ asset('assets/icons/trash.svg') }}" width="20px" alt="">
                                         </button>

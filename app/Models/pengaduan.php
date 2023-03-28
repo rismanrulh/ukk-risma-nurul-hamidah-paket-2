@@ -9,7 +9,7 @@ class pengaduan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['tgl_pengaduan', 'nik', 'isi_laporan', 'foto', 'status'];
+    protected $fillable = ['tgl_pengaduan', 'tgl_selesai', 'nik', 'isi_laporan', 'foto', 'status'];
 
     public function getDataMasyarakat()
     {

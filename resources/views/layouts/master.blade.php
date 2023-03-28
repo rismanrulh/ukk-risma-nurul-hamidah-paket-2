@@ -28,12 +28,12 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <ul class="navbar-nav">
-          @if (Auth::guard('masyarakat')->user())
-            <li><a class="{{ request()->is('pengaduan') ? 'active' : '' }} nav-link" href="/masyarakat/complain">Daftar Aduan</a></li>
+          @if (Auth::guard('masyarakat')->user())   
+            <li><a class="{{ request()->is('/masyarakat/complain') ? 'active' : '' }} nav-link" href="/masyarakat/complain">Daftar Aduan</a></li>
           @endif
           @if (Auth::guard('petugas')->user())
             <li><a class="{{ request()->is('petugas/daftar-pengaduan') ? 'active' : '' }} nav-link" href="/petugas/daftar-pengaduan">Daftar Aduan</a></li>
-            <li><a class="{{ request()->is('petugas/tanggapan') ? 'active' : '' }} nav-link" href="{{ route('tanggapan') }}">Daftar Tanggapan</a></li>
+            <li><a class="{{ request()->is('petugas/daftar-tanggapan') ? 'active' : '' }} nav-link" href="{{ route('tanggapan') }}">Daftar Tanggapan</a></li>
             <li><a class="{{ request()->is('petugas/masyarakat') ? 'active' : '' }} nav-link" href="#">Daftar Masyarakat</a></li>
             <li><a class="{{ request()->is('petugas/petugas') ? 'active' : '' }} nav-link" href="# }}">Daftar Petugas</a></li>
           @endif

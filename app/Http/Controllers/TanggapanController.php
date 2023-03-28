@@ -28,8 +28,8 @@ class TanggapanController extends Controller
     public function createTanggapan($id_pengaduan)
     {
         $pengaduan = pengaduan::findOrFail($id_pengaduan);
-        if ($pengaduan->status == 'Selesai' || $pengaduan->status == 'Proses') {
-            return back()->with('error', 'Tanggapan sudah tersedia.');
+        if ($pengaduan->status == 'selesai' || $pengaduan->status == 'proses') {
+            return back()->with('error', 'Pengaduan sudah ditanggapi.');
         }
 
         return view('tanggapan.create', compact('pengaduan'));

@@ -47,7 +47,7 @@
                         <td>
                             {!! $complain->status == '0'
                                 ? '<span class="badge text-bg-dark">Pending</span>'
-                                : ($complain->status == 'Proses'
+                                : ($complain->status == 'proses'
                                     ? '<span class="badge text-bg-warning">Proses</span>'
                                     : '<span class="badge text-bg-success">Selesai</span>') !!}
                         </td>

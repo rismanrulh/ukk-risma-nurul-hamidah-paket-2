@@ -47,7 +47,7 @@
                                 <td>
                                     {!! 
                                         $tanggapan->getDataPengaduan->status == "0" ? '<span class="badge text-bg-secondary">Pending</span>' :
-                                        ($tanggapan->getDataPengaduan->status == "Proses" ? '<span class="badge text-bg-warning">Proses</span>' : '<span class="badge text-bg-success">Selesai</span>')
+                                        ($tanggapan->getDataPengaduan->status == "proses" ? '<span class="badge text-bg-warning">Proses</span>' : '<span class="badge text-bg-success">Selesai</span>')
                                     !!}
                                 </td>
                                 <td>
@@ -61,7 +61,7 @@
                                             <img src="{{ asset('assets/bootstrap-icons/pencil-square.svg') }}" width="20px" alt="">
                                         </button>
                                     </a>
-                                    <a class="text-decoration-none" href="/petugas/tanggapan/delete/{{ $tanggapan->id }}" onclick="return confirm('Are you sure to delete?')">
+                                    <a class="text-decoration-none" href="/petugas/tanggapan/delete/{{ $tanggapan->id }}" onclick="return confirm('Are you sure to deletes?')">
                                         <button type="button" class="btn btn-danger btn-sm">
                                             <img src="{{ asset('assets/bootstrap-icons/trash.svg') }}" width="20px" alt="">
                                         </button>
