@@ -42,7 +42,7 @@ class LoginController extends Controller
 
         if (Auth::guard('petugas')->attempt(['username' => $request->username, 'password' => $request->password], $request->get('remember'))) {
             $request->session()->regenerate();
-            return redirect()->route('petugas.landing');
+            return redirect()->route('petugas.dashboard');
         }
         return back()->with('error', 'Username atau Password tidak sesuai.');
     }

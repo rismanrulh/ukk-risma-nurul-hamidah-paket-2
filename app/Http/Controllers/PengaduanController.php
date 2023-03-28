@@ -97,6 +97,7 @@ class PengaduanController extends Controller
         if ($pengaduan && $tanggapan) {
             $pengaduan->delete();
             $tanggapan->delete();
+            return redirect()->route('pengaduan.index')->with('success', 'Berhasil mengahapus panduan');
         }
         return redirect()->route('pengaduan.index')->with('error', 'Gagal menghapus pengaduan.');
     }
@@ -117,9 +118,13 @@ class PengaduanController extends Controller
      * @param  \App\Models\pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function edit(pengaduan $pengaduan)
+    public function edit($id)
     {
-        //
+        $pengaduan = Pengaduan::find($id);
+        if ($pengaduan->status == 'Selesai') {
+            return back()->with('error', 'Status pengaduan sudah selesai.');
+        }
+        return view('pengaduan.edit', compact('pengaduan'));
     }
 
     /**
@@ -129,19 +134,32 @@ class PengaduanController extends Controller
      * @param  \App\Models\pengaduan  $pengaduan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pengaduan $pengaduan)
+    public function update(Request $request, $id)
     {
-        //
+        if ($request->file('foto')) {
+            $fileImage = hexdec(uniqid()) . "." . $request->foto->extension();
+            Image::make($request->file('foto'))->save('assets/images/' . $fileImage);
+            $pengaduanImage = 'assets/images/' . $fileImage;
+
+            $data = Pengaduan::findOrFail($id);
+            $data->tgl_pengaduan = $request->tgl_pengaduan;
+            $data->isi_laporan = $request->isi_laporan;
+            $data->foto = $pengaduanImage;
+            $data->update();
+        } else {
+            $data = Pengaduan::findOrFail($id);
+            $data->tgl_pengaduan = $request->tgl_pengaduan;
+            $data->isi_laporan = $request->isi_laporan;
+            $data->foto = $request->foto_lama;
+            $data->update();
+        }
+
+        return redirect()->route('pengaduan.index')->with('success', 'Berhasil mengubah pengaduan.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\pengaduan  $pengaduan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(pengaduan $pengaduan)
+    public function getListComplains()
     {
-
+            $pengaduans = Pengaduan::latest()->with('getDataMasyarakat', 'getDataTanggapan')->paginate(5);
+            return view('petugas.complains', compact('pengaduans'));
     }
 }

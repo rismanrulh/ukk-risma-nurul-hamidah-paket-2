@@ -9,7 +9,7 @@ class tanggapan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_pengaduan', 'tgl_tanggapan', 'tanggapan', 'id_petugas'];
+    protected $fillable = ['id_pengaduan', 'tgl_selesai', 'tgl_tanggapan', 'tanggapan', 'id_petugas'];
 
     public function getDataPengaduan()
     {

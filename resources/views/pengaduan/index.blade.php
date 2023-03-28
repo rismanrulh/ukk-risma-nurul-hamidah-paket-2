@@ -20,7 +20,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
-        <table class="table table-primary mt-2 text-center">
+        <table class="table table-primary mt-4 text-center">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -52,12 +52,12 @@
                                     : '<span class="badge text-bg-success">Selesai</span>') !!}
                         </td>
                         <td>
-                            <a class="text-decoration-none" href="/pengaduan/edit/{{ $complain->id }}">
+                            <a class="text-decoration-none" href="/masyarakat/pengaduan/edit/{{ $complain->id }}">
                                 <button type="button" class="btn btn-light btn-sm">
                                     <img src="{{ asset('assets/icons/pencil-square.svg') }}" width="20px" alt="">
                                 </button>
                             </a>
-                            <a class="text-decoration-none" href="/pengaduan/delete/{{ $complain->id }}"
+                            <a class="text-decoration-none" href="/masyarakat/pengaduan/delete/{{ $complain->id }}"
                                 onclick="return confirm('Are you sure to delete?')">
                                 <button type="button" class="btn btn-danger btn-sm">
                                     <img src="{{ asset('assets/icons/trash.svg') }}" width="20px" alt="">

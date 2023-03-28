@@ -78,7 +78,7 @@ return [
         ],
         'petugass' => [
             'driver' =>'eloquent',
-            'model' => App\Models\masyarakat::class,
+            'model' => App\Models\petugas::class,
         ],
 
         // 'users' => [

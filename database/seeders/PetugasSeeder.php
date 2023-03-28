@@ -26,7 +26,7 @@ class PetugasSeeder extends Seeder
             [
                 'nama' => 'Siti Sahla Fauzia Ardiani',
                 'username' => 'sahla',
-                'password' => bcrypt('sahla'),
+                'password' => bcrypt('sahla1'),
                 'telp' => '08558531202',
                 'level' => 'Petugas',
             ],

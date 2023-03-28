@@ -1,4 +1,46 @@
 @extends('layouts.auth')
+
+@section('content')
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ session ('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
+                <div class="container mt-4">
+                    <main class="form-login">
+                        <form action="/register" method="POST">
+                            @csrf
+                            <h1 class="h3 mb-3 fw-normal">Daftar</h1>
+                            <div class="form-floating">
+                                <input type="number" name="nik" class="form-control mt-2" id="nik" placeholder="NIK" autofocus>
+                                <label for="nik">NIK</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" name="nama" class="form-control mt-2" id="nama" placeholder="Nama" autofocus>
+                                <label for="nama">Nama</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="text" name="username" class="form-control mt-2" id="username" placeholder="username" autofocus>
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" name="password" class="form-control mt-2" id="password" placeholder="password">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="form-floating">
+                                <input type="number" name="telp" class="form-control mt-2" id="telp" placeholder="telp" autofocus>
+                                <label for="telp">Nomor Telepon</label>
+                            </div>
+                            <button class="w-100 btn btn-lg btn-primary mt-4" type="submit" >Daftar</button>
+                        </form>
+                    </main>
+                </div>
+            </div>
+            
+            {{-- @extends('layouts.auth')
 @section('content')
     <div class="register-form">
       <div class="auth-vector">
@@ -43,4 +85,4 @@
         <p class="auth-sign">Sudah punya akun? <a href="{{ route('login') }}">Login</a></p>
       </div>
     </div>
-@endsection
+@endsection --}}

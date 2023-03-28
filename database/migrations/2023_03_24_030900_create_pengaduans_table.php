@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('pengaduans', function (Blueprint $table) {
             $table->id();
             $table->date('tgl_pengaduan');
+            $table->date('tgl_selesai')->nullable();
             $table->char('nik');
             $table->text('isi_laporan');
             $table->string('foto');

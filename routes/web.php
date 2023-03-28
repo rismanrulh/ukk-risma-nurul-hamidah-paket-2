@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\PengaduanController;
+use App\Http\Controllers\PetugasController;
+use App\Http\Controllers\TanggapanController;
 use App\Models\masyarakat;
 use Illuminate\Foundation\Auth\User;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -30,7 +32,7 @@ Route::get('/login', [LoginController::class, 'showLoginMasyarakat'])->name('log
 Route::post('/login', [LoginController::class, 'loginMasyarakat']);
 
 Route::get('/petugas/login', [LoginController::class, 'showLoginPetugas'])->name('petugas.login');
-Route::post('/petugas/login', [LoginController::class, 'loginPetugas'])->name('auth.petugas ');
+Route::post('/petugas/auth/login', [LoginController::class, 'loginPetugas'])->name('auth.petugas ');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
@@ -39,4 +41,15 @@ Route::get('/masyarakat/dashboard', [MasyarakatController::class, 'dashboard'])-
 Route::get('/masyarakat/complain', [PengaduanController::class, 'index'])->name('pengaduan.index');
 Route::get('/masyarakat/create', [PengaduanController::class, 'create']);
 Route::post('/masyarakat', [PengaduanController::class, 'store']);
-Route::get('/masyarakat/pengaduan/{id}', [PengaduanController::class, 'delete']);
+Route::get('/masyarakat/pengaduan/delete/{id}', [PengaduanController::class, 'delete']);
+Route::get('/masyarakat/pengaduan/edit/{id}', [PengaduanController::class, 'edit']);
+Route::post('/masyarakat/pengaduan/update/{id}', [PengaduanController::class, 'update'])->name('pengaduan.update');
+
+//petugas
+Route::get('/petugas/dashboard', [PetugasController::class, 'dashboard'])->name('petugas.dashboard');
+Route::get('/petugas/daftar-pengaduan', [PengaduanController::class, 'getListComplains']);
+Route::get('/petugas/tanggapan/create/{id_pengaduan}', [TanggapanController::class, 'createTanggapan'])->name('petugas.tanggapan');
+Route::post('/petugas/tanggapan/store/{id_pengaduan}', [TanggapanController::class, 'storeTanggapan'])->name('tanggapan.store');
+Route::get('/petugas/daftar-tanggapan', [TanggapanController::class, 'index'])->name('tanggapan');
+Route::get('/petugas/tanggapan/delete/{id}', [TanggapanController::class, 'deleteTanggapan'])->name('tanggapan.delete');
+

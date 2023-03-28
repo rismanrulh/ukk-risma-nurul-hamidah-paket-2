@@ -9,6 +9,10 @@
         width: 100%;
         text-decoration: none;
     }
+
+    a {
+        text-decoration: none;
+    }
 @endsection
 
 @section('content')
@@ -36,10 +40,10 @@
                             </div>
                             <button class="w-100 btn btn-lg btn-primary mt-4" type="submit" >Login</button>
                         </form>
-                        <small class="d-block text-center mt-3">Belum punya akun? <a href="/register">Register</a></small>
                         <button type="submit" class="auth-button-outline">
                             <a href="{{ route('petugas.login') }}" class="auth-link">Login Sebagai Petugas</a>
                         </button>
+                        <small class="d-block text-center mt-3">Belum punya akun? <a href="/register">Register</a></small>
                     </main>
                 </div>
             </div>
@@ -54,7 +58,7 @@
                 @endif
                 <div class="container">
                     <main class="form-login">
-                        <form action="{{ route('auth.petugas') }}" method="POST">
+                        <form action="/petugas/auth/login" method="POST">
                             @csrf
                             <h1 class="h3 mb-3 fw-normal">Login Petugas</h1>
                             <div class="form-floating">
