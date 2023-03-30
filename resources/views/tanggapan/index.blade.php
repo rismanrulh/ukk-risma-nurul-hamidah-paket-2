@@ -3,7 +3,7 @@
     <div class="card">
         <div class="d-flex card-header">
             <h4 class="card-title">Data Tanggapan</h4>
-            <a href="#" class="btn btn-danger ms-auto">
+            <a href="{{ route('generate') }}" class="btn btn-danger ms-auto">
                 <img src="{{ asset('assets/bootstrap-icons/printer.svg') }}" width="20px" alt="">
                 Generate Laporan
             </a>

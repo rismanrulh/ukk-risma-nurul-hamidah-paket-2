@@ -34,8 +34,8 @@
           @if (Auth::guard('petugas')->user())
             <li><a class="{{ request()->is('petugas/daftar-pengaduan') ? 'active' : '' }} nav-link" href="/petugas/daftar-pengaduan">Daftar Aduan</a></li>
             <li><a class="{{ request()->is('petugas/daftar-tanggapan') ? 'active' : '' }} nav-link" href="{{ route('tanggapan') }}">Daftar Tanggapan</a></li>
-            <li><a class="{{ request()->is('petugas/masyarakat') ? 'active' : '' }} nav-link" href="#">Daftar Masyarakat</a></li>
-            <li><a class="{{ request()->is('petugas/petugas') ? 'active' : '' }} nav-link" href="# }}">Daftar Petugas</a></li>
+            <li><a class="{{ request()->is('petugas/masyarakat') ? 'active' : '' }} nav-link" href="{{ route('petugas.masyarakat')}}">Daftar Masyarakat</a></li>
+            <li><a class="{{ request()->is('petugas/petugas') ? 'active' : '' }} nav-link" href="{{ route('petugas.petugas')}}">Daftar Petugas</a></li>
           @endif
         </ul>
         <ul class="navbar-nav ms-auto">

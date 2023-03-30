@@ -87,9 +87,11 @@ class TanggapanController extends Controller
      * @param  \App\Models\tanggapan  $tanggapan
      * @return \Illuminate\Http\Response
      */
-    public function edit(tanggapan $tanggapan)
+    public function editTanggapan($id)
     {
-        //
+        $tanggapan = Tanggapan::findOrFail($id);
+        $pengaduan = Pengaduan::findOrFail($tanggapan->id_pengaduan);
+        return view('tanggapan.edit', compact('tanggapan', 'pengaduan'));
     }
 
     /**
@@ -99,9 +101,30 @@ class TanggapanController extends Controller
      * @param  \App\Models\tanggapan  $tanggapan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tanggapan $tanggapan)
+public function updateTanggapan(Request $request, $id)
     {
-        //
+        $request->validate([
+            'id_pengaduan' => 'required',
+            'tgl_tanggapan' => 'required',
+            'tanggapan' => 'required',
+            'id_petugas' => 'required',
+        ]);
+    
+        $updateStatus = Pengaduan::findOrFail($request->id_pengaduan);
+        if ($updateStatus->status == 'Proses' && $request->status == 'Selesai') {
+            $updateStatus->tgl_selesai = Carbon::now();
+        } elseif ($updateStatus->status == 'Selesai' && $request->status == 'Proses') {
+            $updateStatus->tgl_selesai = null;
+        }
+        $updateStatus->status = $request->status;
+        $updateStatus->update();
+    
+        $data = Tanggapan::findOrFail($id);
+        $data->tgl_tanggapan = $request->tgl_tanggapan;
+        $data->tanggapan = $request->tanggapan;
+        $data->id_petugas = $request->id_petugas;
+        $data->update();
+        return redirect()->route('tanggapan')->with('success', 'Berhasil mengubah tanggapan.');
     }
 
     /**

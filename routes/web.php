@@ -52,4 +52,17 @@ Route::get('/petugas/tanggapan/create/{id_pengaduan}', [TanggapanController::cla
 Route::post('/petugas/tanggapan/store/{id_pengaduan}', [TanggapanController::class, 'storeTanggapan'])->name('tanggapan.store');
 Route::get('/petugas/daftar-tanggapan', [TanggapanController::class, 'index'])->name('tanggapan');
 Route::get('/petugas/tanggapan/delete/{id}', [TanggapanController::class, 'deleteTanggapan'])->name('tanggapan.delete');
+Route::get('/petugas/tanggapan/edit/{id}', [TanggapanController::class, 'editTanggapan']);
+Route::post('/petugas/tanggapan/update/{id}', [TanggapanController::class, 'updateTanggapan'])->name('tanggapan.update');
+
+Route::get('/petugas/petugas', [PetugasController::class, 'akunPetugas'])->name('petugas.petugas');
+Route::get('/petugas/masyarakat', [PetugasController::class, 'getAkunMasyarakat'])->name('petugas.masyarakat');
+Route::get('/petugas/masyarakat/delete/{id}', [PetugasController::class, 'deleteAkunMasyarakat']);
+Route::get('/petugas/petugas/create', [PetugasController::class, 'createPetugas'])->name('petugas.create');
+Route::post('/petugas/petugas/store', [PetugasController::class, 'storePetugas'])->name('petugas.store');
+Route::get('/petugas/petugas/delete/{id}', [PetugasController::class, 'deletePetugas']);
+Route::get('/petugas/petugas/edit/{id}', [PetugasController::class, 'editPetugas']);
+Route::post('/petugas/petugas/update/{id}', [PetugasController::class, 'updatePetugas'])->name('petugas.update');
+
+Route::get('/petugas/tanggapan/generate-pdf', [PetugasController::class, 'generatePDF'])->name('generate');
 
