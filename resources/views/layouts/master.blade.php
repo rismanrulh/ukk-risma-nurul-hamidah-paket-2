@@ -6,11 +6,15 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
   <link rel="shortcut icon" href="{{ asset('assets/icons/favicon.jpg') }}" type="image/x-icon">
+  <style>
+    @yield('css');
+  </style>
   <title>Applikasi Pelaporan Pengaduan Masyarakat</title>
 </head>
+
 <body>
 
-  <nav class="navbar bg-warning navbar-expand-lg" data-bs-theme="dark">
+  <nav class="navbar bg-dark navbar-expand-lg" data-bs-theme="dark">
     <div class="container-fluid">
       @if (Auth::guard('masyarakat')->user())
         <a class="navbar-brand" href="{{ route('masyarakat.dashboard') }}">

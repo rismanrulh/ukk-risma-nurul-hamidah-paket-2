@@ -6,6 +6,7 @@ use App\Models\masyarakat;
 use App\Models\pengaduan;
 use App\Models\petugas;
 use App\Models\tanggapan;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -193,6 +194,58 @@ class PetugasController extends Controller
 
     public function generatePDF()
     {
-        //code
+        if (Auth::guard('petugas')->user()->level == 'Petugas') {
+            return back()->with('error', 'Anda tidak memiliki akses.');
+        }
+    
+        $admin = Auth::guard('petugas')->user()->nama;
+        $tanggapans = Tanggapan::latest()->with('getDataPetugas', 'getDataPengaduan')->get();
+    
+        $data = [
+            'judul' => 'Generate Tanggapan dan Pengaduan',
+            'admin' => $admin,
+            'tanggapans' => $tanggapans,
+        ];
+    
+        $pdf = Pdf::loadView('petugas.generatePDF', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
+
+    public function generatePDFSelesai()
+    {
+        if (Auth::guard('petugas')->user()->level == 'Petugas') {
+            return back()->with('error', 'Anda tidak memiliki akses.');
+        }
+    
+        $admin = Auth::guard('petugas')->user()->nama;
+        $pengaduans = pengaduan::where('status', 'selesai')->with('getDataMasyarakat', 'getDataTanggapan')->get();
+    
+        $data = [
+            'judul' => 'Generate Pengaduan Selesai',
+            'admin' => $admin,
+            'pengaduans' => $pengaduans,
+        ];
+    
+        $pdf = Pdf::loadView('petugas.generatePDFSelesai', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
+
+    public function generatePDFProses()
+    {
+        if (Auth::guard('petugas')->user()->level == 'Petugas') {
+            return back()->with('error', 'Anda tidak memiliki akses.');
+        }
+    
+        $admin = Auth::guard('petugas')->user()->nama;
+        $pengaduans = pengaduan::where('status', 'proses')->with('getDataMasyarakat', 'getDataTanggapan')->get();
+    
+        $data = [
+            'judul' => 'Generate Pengaduan Proses',
+            'admin' => $admin,
+            'pengaduans' => $pengaduans,
+        ];
+    
+        $pdf = Pdf::loadView('petugas.generatePDFProses', $data)->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

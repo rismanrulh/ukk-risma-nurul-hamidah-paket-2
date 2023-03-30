@@ -20,31 +20,17 @@ class PengaduanSeeder extends Seeder
         $data = [
             [
                 'tgl_pengaduan' => Carbon::now('Asia/Jakarta'),
-                'nik' => '3201252007070003',
+                'nik' => '3201252007070005',
                 'isi_laporan' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, optio vel distinctio ea dolorem similique.',
-                'foto' => 'assets/images/1760420147845256.jpg',
+                'foto' => 'assets/images/1758323670530735.jpg',
                 'status' => '0',
             ],
             [
                 'tgl_pengaduan' => Carbon::now('Asia/Jakarta'),
-                'nik' => '3201252007070003',
+                'nik' => '3201252007070005',
                 'isi_laporan' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, optio vel distinctio ea dolorem similique.',
-                'foto' => 'assets/images/1760420147845256.jpg',
-                'status' => '0',
-            ],
-            [
-                'tgl_pengaduan' => Carbon::now('Asia/Jakarta'),
-                'nik' => '3201252007070003',
-                'isi_laporan' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, optio vel distinctio ea dolorem similique.',
-                'foto' => 'assets/images/1760420147845256.jpg',
-                'status' => 'Selesai',
-            ],
-            [
-                'tgl_pengaduan' => Carbon::now('Asia/Jakarta'),
-                'nik' => '3201252007070003',
-                'isi_laporan' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sunt, optio vel distinctio ea dolorem similique.',
-                'foto' => 'assets/images/1760420147845256.jpg',
-                'status' => '0',
+                'foto' => 'assets/images/1758323670530735.jpg',
+                'status' => 'selesai',
             ],
         ];
 

@@ -162,4 +162,17 @@ class PengaduanController extends Controller
             $pengaduans = Pengaduan::latest()->with('getDataMasyarakat', 'getDataTanggapan')->paginate(5);
             return view('petugas.complains', compact('pengaduans'));
     }
+
+    public function getComplainsFinish()
+    {
+        $pengaduans = Pengaduan::where('status', 'selesai')->with('getDataMasyarakat', 'getDataTanggapan')->get();
+        // dd($pengaduans);
+        return view('pengaduan.finish', compact('pengaduans'));
+    }
+
+    public function getComplainsProses()
+    {
+        $pengaduans = pengaduan::where('status', 'proses')->with('getDataMasyarakat', 'getDataTanggapan')->get();
+        return view('pengaduan.proses', compact('pengaduans'));
+    }
 }

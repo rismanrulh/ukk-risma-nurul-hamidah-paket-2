@@ -1,4 +1,10 @@
 @extends('layouts.master')
+@section('css')
+    a {
+        text-decoration: none;
+        color: #000;
+    }   
+@endsection
 @section('content')
     <div class="card mb-4">
         <div class="card-body py-4 px-4 d-flex justify-content-between">
@@ -28,10 +34,12 @@
                                 <img src="{{ asset('assets/bootstrap-icons/person.svg') }}" alt="">
                             </div>
                         </div>
-                        <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                            <h6 class="text-muted font-semibold">Total Masyarakat</h6>
-                            <h6 class="font-extrabold mb-0">{{ $masyarakats }}</h6>
-                        </div>
+                        <a href="{{ route('petugas.masyarakat') }}">
+                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                <h6 class="text-muted font-semibold">Total Masyarakat</h6>
+                                <h6 class="font-extrabold mb-0">{{ $masyarakats }}</h6>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -45,10 +53,12 @@
                                     <img src="{{ asset('assets/bootstrap-icons/megaphone.svg') }}" alt="">
                                 </div>
                             </div>
-                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                <h6 class="text-muted font-semibold">Total Aduan</h6>
-                                <h6 class="font-extrabold mb-0">{{ $complains }}</h6>
-                            </div>
+                            <a href="/petugas/daftar-pengaduan">
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Total Aduan</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $complains }}</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -62,10 +72,12 @@
                                     <img src="{{ asset('assets/bootstrap-icons/arrow-clockwise.svg') }}" alt="">
                                 </div>
                             </div>
-                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                <h6 class="text-muted font-semibold">Aduan Proses</h6>
-                                <h6 class="font-extrabold mb-0">{{ $complainsProcess }}</h6>
-                            </div>
+                            <a href="/petugas/pengaduan-proses">
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Aduan Proses</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $complainsProcess }}</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -79,10 +91,12 @@
                                     <img src="{{ asset('assets/bootstrap-icons/check-square.svg') }}" alt="">
                                 </div>
                             </div>
-                            <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                <h6 class="text-muted font-semibold">Aduan Selesai</h6>
-                                <h6 class="font-extrabold mb-0">{{ $complainsFinish }}</h6>
-                            </div>
+                            <a href="/petugas/pengaduan-selesai">
+                                <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
+                                    <h6 class="text-muted font-semibold">Aduan Selesai</h6>
+                                    <h6 class="font-extrabold mb-0">{{ $complainsFinish }}</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -57,12 +57,12 @@
                                     <img src="{{ asset('assets/icons/pencil-square.svg') }}" width="20px" alt="">
                                 </button>
                             </a>
-                            <a class="text-decoration-none" href="/masyarakat/pengaduan/delete/{{ $complain->id }}"
+                            {{-- <a class="text-decoration-none" href="/masyarakat/pengaduan/delete/{{ $complain->id }}"
                                 onclick="return confirm('Are you sure to delete?')">
                                 <button type="button" class="btn btn-danger btn-sm">
                                     <img src="{{ asset('assets/icons/trash.svg') }}" width="20px" alt="">
                                 </button>
-                            </a>
+                            </a> --}}
                         </td>
                     </tr>
                 @endforeach
